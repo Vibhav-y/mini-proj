@@ -17,25 +17,34 @@
 
 body {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
 =======
+=======
+>>>>>>> Stashed changes
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.45;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
 /* ====== HEADER ====== */
 header {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     text-align: center;
     margin-bottom: 20px;
 =======
+=======
+>>>>>>> Stashed changes
   position: sticky;
   top: 0;
   z-index: 10;
@@ -122,6 +131,9 @@ nav a,
   text-decoration: none;
   font-size: 0.8rem;
   color: var(--muted);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
 
@@ -131,6 +143,7 @@ nav a:hover {
 
 /* ====== PRODUCT GRID ====== */
 #product-container {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -163,6 +176,12 @@ nav a:hover {
     font-weight: bold;
     color: #27ae60;
     font-size: 1.1em;
+=======
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+>>>>>>> Stashed changes
 }
 =======
   padding: 1rem;
@@ -317,4 +336,7 @@ footer {
   padding: 1rem;
   border-top: 1px solid var(--border);
 }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
