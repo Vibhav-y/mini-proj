@@ -364,6 +364,61 @@ nav a:hover {
   color: var(--muted);
 }
 
+/* ====== PAGINATION ====== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.85rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.pagination-ellipsis {
+  padding: 0.5rem 0.25rem;
+  color: var(--muted);
+}
+
+.pagination-info {
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.no-results {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem;
+  grid-column: 1 / -1;
+}
+
 /* ====== FOOTER ====== */
 footer {
   text-align: center;
