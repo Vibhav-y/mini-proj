@@ -1,14 +1,137 @@
+/* ====== BASE ====== */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #2563eb;
+
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
+<<<<<<< Updated upstream
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
+=======
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+>>>>>>> Stashed changes
 }
+
+/* ====== HEADER ====== */
 header {
+<<<<<<< Updated upstream
     text-align: center;
     margin-bottom: 20px;
+=======
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
 }
+
+header h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* ====== SEARCH ====== */
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+#searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0.45rem 0.6rem;
+  font-size: 0.85rem;
+  background: transparent;
+}
+
+#searchInput::placeholder {
+  color: var(--muted);
+}
+
+#searchBtn {
+  border: none;
+  background: transparent;
+  padding: 0 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+#searchBtn:hover {
+  color: var(--text);
+}
+
+/* Suggestions */
+#suggestions-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.suggestion {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.suggestion:hover {
+  background: #f3f4f6;
+}
+
+/* ====== NAV ====== */
+nav a,
+#backLink {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--muted);
+>>>>>>> Stashed changes
+}
+
+nav a:hover {
+  color: var(--text);
+}
+
+/* ====== PRODUCT GRID ====== */
 #product-container {
+<<<<<<< Updated upstream
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
@@ -41,3 +164,157 @@ header {
     color: #27ae60;
     font-size: 1.1em;
 }
+=======
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+/* ====== PRODUCT CARD ====== */
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  border-color: #d1d5db;
+}
+
+.product-card img {
+  height: 140px;
+  object-fit: contain;
+  background: #f9fafb;
+  border-radius: 4px;
+  padding: 0.4rem;
+}
+
+.product-card h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.product-card .price {
+  font-size: 0.8rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ====== HISTORY ====== */
+#history-container {
+  max-width: 720px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.history-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+#clearHistoryBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+#clearHistoryBtn:hover {
+  color: #dc2626;
+  border-color: #dc2626;
+}
+
+#historyList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+}
+
+.history-query {
+  color: var(--text);
+}
+
+.history-timestamp {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+/* ====== PRODUCT DETAIL ====== */
+.product-detail-layout {
+  max-width: 1100px;
+  margin: auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .product-detail-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+#product-image {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  background: var(--surface);
+}
+
+#product-image img {
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+}
+
+.product-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#product_name {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+#product_price {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+#product_description {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ====== FOOTER ====== */
+footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+}
+>>>>>>> Stashed changes
