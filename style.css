@@ -18,11 +18,14 @@
 body {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   margin: 0;
@@ -31,6 +34,9 @@ body {
   color: var(--text);
   line-height: 1.45;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -40,9 +46,12 @@ body {
 header {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     text-align: center;
     margin-bottom: 20px;
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   position: sticky;
@@ -132,6 +141,9 @@ nav a,
   font-size: 0.8rem;
   color: var(--muted);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -143,6 +155,7 @@ nav a:hover {
 
 /* ====== PRODUCT GRID ====== */
 #product-container {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     display: grid;
@@ -184,6 +197,8 @@ nav a:hover {
 >>>>>>> Stashed changes
 }
 =======
+=======
+>>>>>>> Stashed changes
   padding: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -337,6 +352,9 @@ footer {
   border-top: 1px solid var(--border);
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
