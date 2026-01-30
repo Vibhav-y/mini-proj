@@ -9,8 +9,16 @@
 <body>
     <header>
         <h1>My Product Store</h1>
-        <input type="text" id="searchInput" placeholder="Search products..." />
-        <button type="submit" id="searchBtn" for="search">Search</button>
+        <div class="header-actions">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="Search products..." />
+                <button type="submit" id="searchBtn" for="search">Search</button>
+                <div id="suggestions-container"></div>
+            </div>
+            <nav>
+                <a href="history.html">View Search History</a>
+            </nav>
+        </div>
     </header>
     <main id="product-container">
         <p>Loading products...</p>
