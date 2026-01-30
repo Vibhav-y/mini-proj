@@ -143,17 +143,17 @@ function showHistorySuggestions(prefix = '') {
     displaySuggestions(items, suggestionContainer);
 }
 
+// Allow pagination module to update products for suggestions
+window.updateProductsForSuggestions = function(newProducts) {
+    products = newProducts;
+};
+
 document.addEventListener('DOMContentLoaded', () => {
    
-    fetchProducts(apiUrl)
-        .then(data => {
-            products = data.products;
-            container.innerHTML = '';
-            displayProducts(data.products, container);
-        })
-        .catch(err => {
-            console.error(err);
-        });
+    // Initialize pagination (handles product loading)
+    if (window.Pagination) {
+        Pagination.init();
+    }
 
     // show history when user focuses the input
     searchInput.addEventListener('focus', () => {
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // live product suggestions
+        // live product suggestions from current page products
         const filteredProducts = products.filter(product =>
             product.title.toLowerCase().includes(query)
         );
@@ -186,20 +186,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     searchButton.addEventListener('click', (e) => {
-        const query = searchInput.value.toLowerCase().trim();
-        if (!query) return;
+        const query = searchInput.value.trim();
+        if (!query) {
+            // Empty search resets to all products
+            Pagination.reset();
+            return;
+        }
 
         // save this query for future suggestions
         addQueryToHistory(query);
 
-        fetchProducts(searchApiUrl + encodeURIComponent(query))
-            .then(data => {
-                products = data.products;
-                container.innerHTML = '';
-                displayProducts(data.products, container);
-            })
-            .catch(err => {
-                console.error(err);
-        });
+        // Use pagination search
+        if (window.Pagination) {
+            Pagination.search(query);
+        }
+    });
+
+    // Handle Enter key in search input
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            searchButton.click();
+        }
     });
 });
