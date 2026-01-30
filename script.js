@@ -18,19 +18,50 @@ function fetchProducts(url) {
 }
 
 
+// function displayProducts(products, container) {
+//     container.innerHTML = '';
+//     products.forEach(product => {
+//         const card = document.createElement('div');
+//         card.className = 'product-card';
+            
+//         card.innerHTML = `
+//             <img src="${product.thumbnail}" alt="${product.title}">
+//             <h3>${product.title}</h3>
+//             <p class="price">$${product.price}</p>
+//             <script>card.onclick = () => {
+//                 window.open(`./product.html?id=${product.id}`, '_blank');
+//             };</script>
+//         `;
+        
+//         container.appendChild(card);
+//     });
+// }
+
 function displayProducts(products, container) {
     container.innerHTML = '';
+
     products.forEach(product => {
         const card = document.createElement('div');
         card.className = 'product-card';
+
+        // 👇 store the REAL product id
+        card.dataset.productId = product.id;
+
         card.innerHTML = `
             <img src="${product.thumbnail}" alt="${product.title}">
             <h3>${product.title}</h3>
             <p class="price">$${product.price}</p>
         `;
+
+        card.addEventListener('click', () => {
+            const pid = card.dataset.productId;
+            window.open(`./product.html?id=${pid}`, '_blank');
+        });
+
         container.appendChild(card);
     });
 }
+
 function displaySuggestions(items, container) {
     container.innerHTML = '';
 
@@ -113,62 +144,24 @@ function showHistorySuggestions(prefix = '') {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-   
-    fetchProducts(apiUrl)
+    const container = document.getElementById('product-container');
+
+    fetch('https://dummyjson.com/products')
+        .then(res => res.json())
         .then(data => {
-            products = data.products;
             container.innerHTML = '';
-            displayProducts(data.products, container);
+            data.products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.thumbnail}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p class="price">$${product.price}</p>
+                `;
+                container.appendChild(card);
+            });
         })
         .catch(err => {
             console.error(err);
         });
-
-    // show history when user focuses the input
-    searchInput.addEventListener('focus', () => {
-        if (!searchInput.value) {
-            showHistorySuggestions();
-        }
-    });
-
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-
-        if (!query) {
-            // empty -> show previous search queries
-            showHistorySuggestions();
-            return;
-        }
-
-        // live product suggestions
-        const filteredProducts = products.filter(product =>
-            product.title.toLowerCase().includes(query)
-        );
-        displaySuggestions(filteredProducts, suggestionContainer);
-    });
-
-    searchInput.addEventListener('blur', () => {
-        // Slight delay so click events on suggestions still register
-        setTimeout(() => {
-            suggestionContainer.style.display = 'none';
-        }, 150);
-    });
-
-    searchButton.addEventListener('click', (e) => {
-        const query = searchInput.value.toLowerCase().trim();
-        if (!query) return;
-
-        // save this query for future suggestions
-        addQueryToHistory(query);
-
-        fetchProducts(searchApiUrl + encodeURIComponent(query))
-            .then(data => {
-                products = data.products;
-                container.innerHTML = '';
-                displayProducts(data.products, container);
-            })
-            .catch(err => {
-                console.error(err);
-        });
-    });
 });
