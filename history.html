@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Search History</h1>
+        <nav>
+            <a href="index.html" id="backLink">&larr; Back to Store</a>
+        </nav>
+    </header>
+
+    <main id="history-container">
+        <div class="history-actions">
+            <button id="clearHistoryBtn">Clear History</button>
+        </div>
+        <div id="historyEmptyMessage" class="history-empty">No search history yet.</div>
+        <ul id="historyList"></ul>
+    </main>
+
+    <script src="history.js"></script>
+</body>
+</html>

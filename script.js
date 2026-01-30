@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 const apiUrl = 'https://dummyjson.com/products';
 const searchApiUrl = 'https://dummyjson.com/products/search?q=';
 
@@ -145,7 +143,6 @@ function showHistorySuggestions(prefix = '') {
     displaySuggestions(items, suggestionContainer);
 }
 
->>>>>>> Stashed changes
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('product-container');
 
