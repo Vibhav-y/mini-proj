@@ -55,7 +55,7 @@ function displayProducts(products, container) {
 
         card.addEventListener('click', () => {
             const pid = card.dataset.productId;
-            window.open(`./product.html?id=${pid}`, '_blank');
+            window.location.href = `./product.html?id=${pid}`;
         });
 
         container.appendChild(card);
@@ -144,24 +144,62 @@ function showHistorySuggestions(prefix = '') {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('product-container');
-
-    fetch('https://dummyjson.com/products')
-        .then(res => res.json())
+   
+    fetchProducts(apiUrl)
         .then(data => {
+            products = data.products;
             container.innerHTML = '';
-            data.products.forEach(product => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <img src="${product.thumbnail}" alt="${product.title}">
-                    <h3>${product.title}</h3>
-                    <p class="price">$${product.price}</p>
-                `;
-                container.appendChild(card);
-            });
+            displayProducts(data.products, container);
         })
         .catch(err => {
             console.error(err);
         });
+
+    // show history when user focuses the input
+    searchInput.addEventListener('focus', () => {
+        if (!searchInput.value) {
+            showHistorySuggestions();
+        }
+    });
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+
+        if (!query) {
+            // empty -> show previous search queries
+            showHistorySuggestions();
+            return;
+        }
+
+        // live product suggestions
+        const filteredProducts = products.filter(product =>
+            product.title.toLowerCase().includes(query)
+        );
+        displaySuggestions(filteredProducts, suggestionContainer);
+    });
+
+    searchInput.addEventListener('blur', () => {
+        // Slight delay so click events on suggestions still register
+        setTimeout(() => {
+            suggestionContainer.style.display = 'none';
+        }, 150);
+    });
+
+    searchButton.addEventListener('click', (e) => {
+        const query = searchInput.value.toLowerCase().trim();
+        if (!query) return;
+
+        // save this query for future suggestions
+        addQueryToHistory(query);
+
+        fetchProducts(searchApiUrl + encodeURIComponent(query))
+            .then(data => {
+                products = data.products;
+                container.innerHTML = '';
+                displayProducts(data.products, container);
+            })
+            .catch(err => {
+                console.error(err);
+        });
+    });
 });
