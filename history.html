@@ -15,11 +15,23 @@
     </header>
 
     <main id="history-container">
-        <div class="history-actions">
-            <button id="clearHistoryBtn">Clear History</button>
-        </div>
-        <div id="historyEmptyMessage" class="history-empty">No search history yet.</div>
-        <ul id="historyList"></ul>
+        <section class="history-section">
+            <div class="history-header">
+                <h2>Search History</h2>
+                <button id="clearSearchHistoryBtn" class="clear-btn">Clear</button>
+            </div>
+            <div id="searchHistoryEmptyMessage" class="history-empty">No search history yet.</div>
+            <ul id="searchHistoryList"></ul>
+        </section>
+
+        <section class="history-section">
+            <div class="history-header">
+                <h2>Recently Viewed Products</h2>
+                <button id="clearViewHistoryBtn" class="clear-btn">Clear</button>
+            </div>
+            <div id="viewHistoryEmptyMessage" class="history-empty">No viewed products yet.</div>
+            <div id="viewHistoryGrid" class="view-history-grid"></div>
+        </section>
     </main>
 
     <script src="history.js"></script>
